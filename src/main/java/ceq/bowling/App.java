@@ -32,6 +32,7 @@ public class App {
 		scanner.close();
 
 		// Print score board information
+		board.printInformation();
 
     }
     
