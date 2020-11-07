@@ -1,5 +1,12 @@
 package ceq.bowling.score;
 
+/*
+ * Role: validating chances read from input file
+ * 
+ * Input: array of elements in a line
+ * Output: object with player name and number of pins 
+ * 
+ * */
 public class ValidatedChance {
 	
 	String playerName;

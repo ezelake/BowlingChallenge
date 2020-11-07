@@ -6,7 +6,7 @@ import ceq.bowling.score.ScoreBoard;
 import ceq.bowling.util.FileOperator;
 
 /*
- * Role: reading file parameter path and executing tasks needed to show the game score board
+ * Role: reading file path parameter and executing tasks needed to show the game score board
  * 
  * Input: file path
  * Output: game score board 
@@ -27,9 +27,12 @@ public class App {
 		
 		// Create score board using input file
 		ScoreBoard board = new ScoreBoard(scanner);
-
+		
 		// Close scanner after reading file
 		scanner.close();
+
+		// Print score board information
+
     }
     
 }
