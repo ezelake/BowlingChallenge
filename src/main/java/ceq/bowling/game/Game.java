@@ -49,7 +49,11 @@ public class Game {
 					frames.add(factory.createSpare(chances.subList(index, index+3)));
 					index += 2;
 
-				// If it was NORMAL
+				// If it was an error
+				} else if ((chances.get(index).getChancePins() + chances.get(index+1).getChancePins()) > 10){
+					throw new RuntimeException("Error: a max of 10 pins are allowed per frame. Frame: "
+							+ (frames.size()+1) + " Amount: "
+							+ (chances.get(index).getChancePins() + chances.get(index+1).getChancePins()));
 				} else {
 					frames.add(factory.createNormal(chances.subList(index, index+2)));
 					index += 2;
