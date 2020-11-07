@@ -43,4 +43,16 @@ public class FrameTest {
 		assertTrue(frame.getPinfall().equals("5 3"));
 		assertTrue(frame.getPoints() == 8);
 	}
+	
+	@Test
+	public void finalTest() {
+		List<Chance> subList = Arrays.asList(new Chance("10"), new Chance("5"), new Chance("3"));
+		
+		FrameFactory factory = new FrameFactory();
+		Frame frame = factory.createFinal(subList);
+		
+		assertTrue(frame.getPinfall().equals("X 5 3"));
+		assertTrue(frame.getPoints() == 18);
+	}
+
 }
