@@ -2,26 +2,31 @@ package ceq.bowling.game;
 
 import java.util.List;
 
+import ceq.bowling.score.Chance;
+
 public class Final extends Frame {
 	
 	String pinfall;
 
-	public Final(int points, List<String> subList) {
+	public Final(int points, List<Chance> subList) {
+		// Update points
 		this.points = points;
-		for (String string : subList) {
-			this.points += pinsInChance(string);
+		for (Chance chance : subList) {
+			this.points += chance.getChancePins();
 		}
 		
-		this.pinfall = pinfallInChance(subList.get(0)) + " ";
+		// Update string to be shown in output
+		this.pinfall = pinfallInChance(subList.get(0).getChanceValue()) + " ";
 		
-		if (pinsInChance(subList.get(0)) != 10 && (pinsInChance(subList.get(0))+pinsInChance(subList.get(1))) == 10 ) {
+		if (subList.get(0).getChancePins() != 10 && 
+				subList.get(0).getChancePins()+subList.get(1).getChancePins() == 10 ) {
 			this.pinfall += "/";
 		} else {
-			this.pinfall += pinfallInChance(subList.get(1));
+			this.pinfall += pinfallInChance(subList.get(1).getChanceValue());
 		}
 		
 		if(subList.size() == 3) {
-			this.pinfall += (" " + pinfallInChance(subList.get(2)));
+			this.pinfall += (" " + pinfallInChance(subList.get(2).getChanceValue()));
 		}
 	}
 
@@ -30,14 +35,6 @@ public class Final extends Frame {
 		return pinfall;
 	}
 
-	private int pinsInChance(String chance) {
-		if(chance.equals("F")) {
-			return 0;
-		} else {
-			return Integer.parseInt(chance);
-		}
-	}
-	
 	private String pinfallInChance(String chance) {
 		if(chance.equals("10")) {
 			return "X";

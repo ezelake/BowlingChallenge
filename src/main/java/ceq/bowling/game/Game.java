@@ -2,6 +2,8 @@ package ceq.bowling.game;
 
 import java.util.ArrayList;
 
+import ceq.bowling.score.Chance;
+
 /*
  * Role: convert chances to frames
  * 
@@ -11,16 +13,16 @@ import java.util.ArrayList;
  * */
 public class Game {
 	
-	ArrayList<String> chances;
+	ArrayList<Chance> chances;
 	ArrayList<Frame> frames;
 	
 	public Game() {
-		chances = new ArrayList<String>();
+		chances = new ArrayList<Chance>();
 		frames = new ArrayList<Frame>();
 	}
 
-	public void add(String chance) {
-		// Add number of pins to chances
+	public void add(Chance chance) {
+		// Add chance to list
 		chances.add(chance);
 	}
 
@@ -38,23 +40,23 @@ public class Game {
 			
 			if (frames.size() < 9) {
 				// If it was STRIKE
-				if(pinsInChance(chances.get(index)) == 10) {
-					frames.add(factory.createFrame(chances.subList(index, index+3)));
+				if(chances.get(index).getChancePins() == 10) {
+					frames.add(factory.createStrike(chances.subList(index, index+3)));
 					index += 1;
 					
 				// If it was SPARE
-				} else if( pinsInChance(chances.get(index)) + pinsInChance(chances.get(index+1)) == 10) {
-					frames.add(factory.createFrame(chances.subList(index, index+3)));
+				} else if( (chances.get(index).getChancePins() + chances.get(index+1).getChancePins()) == 10) {
+					frames.add(factory.createSpare(chances.subList(index, index+3)));
 					index += 2;
 
 				// If it was NORMAL
 				} else {
-					frames.add(factory.createFrame(chances.subList(index, index+2)));
+					frames.add(factory.createNormal(chances.subList(index, index+2)));
 					index += 2;
 				}
 			} else {
 				// If it is final frame
-				frames.add(factory.createFinalFrame(chances.subList(index, chances.size())));
+				frames.add(factory.createFinal(chances.subList(index, chances.size())));
 			}
 			
 			
@@ -63,14 +65,6 @@ public class Game {
 	
 	public ArrayList<Frame> getFrames(){
 		return frames;
-	}
-	
-	private int pinsInChance(String chance) {
-		if(chance.equals("F")) {
-			return 0;
-		} else {
-			return Integer.parseInt(chance);
-		}
 	}
 	
 }

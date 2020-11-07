@@ -6,6 +6,8 @@ import java.util.ArrayList;
 
 import org.junit.Test;
 
+import ceq.bowling.score.Chance;
+
 public class GameTest {
 
 	@Test
@@ -13,14 +15,14 @@ public class GameTest {
 		Game game = new Game();
 		
 		for (int i = 0; i < 10; i++) {
-			game.add("10");
+			game.add(new Chance("10"));
 		}
 		
 		int sum = 0;
 		
-		ArrayList<String> chances = game.chances;
-		for (String string : chances) {
-			sum += Integer.parseInt(string);
+		ArrayList<Chance> chances = game.chances;
+		for (Chance chance : chances) {
+			sum += chance.getChancePins();
 		}
 		
 		assertTrue(sum == 100);
@@ -31,7 +33,7 @@ public class GameTest {
 		Game game = new Game();
 		
 		for (int i = 0; i < 12; i++) {
-			game.add("10");
+			game.add(new Chance("10"));
 		}
 		
 		game.generateFrames();

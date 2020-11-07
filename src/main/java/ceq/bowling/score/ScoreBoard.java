@@ -9,7 +9,7 @@ import ceq.bowling.game.Frame;
 import ceq.bowling.game.Game;
 
 /*
- * Role: creating game score board
+ * Role: reading input file and creating game score board
  * 
  * Input: file scanner
  * Output: game score board 
@@ -29,16 +29,22 @@ public class ScoreBoard {
 		while (scanner.hasNextLine()) {
 			
 			// Validate line values
-			ValidatedChance chance = new ValidatedChance(scanner.nextLine().split("\\t"));
-			
-			// Create player if it is the first chance
-			if(!players.containsKey(chance.getPlayerName())) {
-				players.put(chance.getPlayerName(), new Game());
+			String line = scanner.nextLine();
+			String[] parameters = line.split("\t");
+			if (parameters.length != 2) {
+				throw new RuntimeException("Error: this line is not properly formatted (" + line + ")");
 			}
-			
-			// Add chance to player's game record
-			players.get(chance.getPlayerName()).add(chance.getChance());
+			String playerName = parameters[0];
+			String chanceValue = parameters[1];
 
+			// Create player if it is the first chance
+			if(!players.containsKey(playerName)) {
+				players.put(playerName, new Game());
+			}
+
+			// Add chance to player's game record
+			Chance chance = new Chance(chanceValue);
+			players.get(playerName).add(chance);
 		}
 	}
 
@@ -50,6 +56,7 @@ public class ScoreBoard {
 			Game game = entry.getValue();
 			game.generateFrames();
 			ArrayList<Frame> frames = game.getFrames();
+			
 			System.out.println("Pinfalls \t" + frames.get(0).getPinfall()
 					+ "\t" + frames.get(1).getPinfall()
 					+ "\t" + frames.get(2).getPinfall()
@@ -60,6 +67,7 @@ public class ScoreBoard {
 					+ "\t" + frames.get(7).getPinfall()
 					+ "\t" + frames.get(8).getPinfall()
 					+ "\t" + frames.get(9).getPinfall());
+			
 			System.out.println("Score \t\t" + frames.get(0).getPoints()
 					+ "\t" + frames.get(1).getPoints()
 					+ "\t" + frames.get(2).getPoints()

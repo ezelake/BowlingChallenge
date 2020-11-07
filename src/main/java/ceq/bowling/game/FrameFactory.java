@@ -2,6 +2,8 @@ package ceq.bowling.game;
 
 import java.util.List;
 
+import ceq.bowling.score.Chance;
+
 /*
  * Role: create frame from a list of chances
  * 
@@ -18,36 +20,41 @@ public class FrameFactory {
 		points = 0;
 	}
 
-	public Frame createFrame(List<String> subList) {
+	public Frame createStrike(List<Chance> subList) {
 		
-		Frame frame = null;
+		// Create the frame
+		Frame frame = new Strike(subList.get(0).getChancePins() + subList.get(1).getChancePins()
+			+ subList.get(2).getChancePins() + points);
 		
-		// Create the frame depending on its type
-		if(pinsInChance(subList.get(0)) == 10) {
-			frame = new Strike(pinsInChance(subList.get(0)) + pinsInChance(subList.get(1))
-			+ pinsInChance(subList.get(2)) + points);
-		} else if((pinsInChance(subList.get(0))+pinsInChance(subList.get(1))) == 10) {
-			frame = new Spare(pinsInChance(subList.get(0)) + pinsInChance(subList.get(1)) 
-			+ pinsInChance(subList.get(2)) + points, subList.get(0));
-		} else {
-			frame = new Normal(pinsInChance(subList.get(0)) + pinsInChance(subList.get(1)) + points, 
-					subList.get(0), subList.get(1));
-		}
+		// Update points and return created frame
+		points = frame.getPoints();
+		return frame;
+	}
+	
+
+	public Frame createSpare(List<Chance> subList) {
+		
+		// Create the frame
+		Frame frame = new Spare(subList.get(0).getChancePins() + subList.get(1).getChancePins()
+			+ subList.get(2).getChancePins() + points, subList.get(0).getChanceValue());
 		
 		// Update points and return created frame
 		points = frame.getPoints();
 		return frame;
 	}
 
-	private int pinsInChance(String chance) {
-		if(chance.equals("F")) {
-			return 0;
-		} else {
-			return Integer.parseInt(chance);
-		}
+	public Frame createNormal(List<Chance> subList) {
+		
+		// Create the frame
+		Frame frame = new Normal(subList.get(0).getChancePins() + subList.get(1).getChancePins()
+			+ points, subList.get(0).getChanceValue(), subList.get(1).getChanceValue());
+		
+		// Update points and return created frame
+		points = frame.getPoints();
+		return frame;
 	}
 
-	public Frame createFinalFrame(List<String> subList) {
+	public Frame createFinal(List<Chance> subList) {
 		return new Final(points, subList);
 	}
 
