@@ -1,5 +1,10 @@
 package ceq.bowling.game;
 
-public class Frame {
-
+abstract class Frame {
+	int points;
+	public int getPoints() {
+		return points;
+	}
+	
+	public abstract String getPinfall();
 }

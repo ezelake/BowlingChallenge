@@ -38,17 +38,17 @@ public class Game {
 			
 			// If it was STRIKE
 			if(chances.get(index) == 10) {
-				frames.add(factory.createFrame(chances.subList(index, index+2)));
+				frames.add(factory.createFrame(chances.subList(index, index+3)));
 				index += 1;
 				
 			// If it was SPARE
 			} else if(chances.get(index)+chances.get(index+1) == 10) {
-				frames.add(factory.createFrame(chances.subList(index, index+2)));
+				frames.add(factory.createFrame(chances.subList(index, index+3)));
 				index += 2;
 
 			// If it was NORMAL
 			} else {
-				frames.add(factory.createFrame(chances.subList(index, index+1)));
+				frames.add(factory.createFrame(chances.subList(index, index+2)));
 				index += 2;
 			}
 			
