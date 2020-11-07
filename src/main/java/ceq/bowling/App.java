@@ -27,7 +27,6 @@ public class App {
 		
 		// Create score board using input file
 		ScoreBoard board = new ScoreBoard(scanner);
-		System.out.println(board);
 
 		// Close scanner after reading file
 		scanner.close();
