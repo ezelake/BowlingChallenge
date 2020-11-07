@@ -1,9 +1,11 @@
 package ceq.bowling.score;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map.Entry;
-import java.util.Scanner;
 
 import ceq.bowling.game.Frame;
 import ceq.bowling.game.Game;
@@ -11,7 +13,7 @@ import ceq.bowling.game.Game;
 /*
  * Role: reading input file and creating game score board
  * 
- * Input: file scanner
+ * Input: file location
  * Output: game score board 
  * 
  * */
@@ -20,31 +22,34 @@ public class ScoreBoard {
 	// Object created to hold players list and their games information
 	HashMap<String, Game> players;
 
-	// using scanner to load information from the file, while validating its content
-	public ScoreBoard(Scanner scanner) {
+	// Load information from the file, while validating its content
+	public ScoreBoard(String fileLocation) {
 		
 		// Create empty players list
 		players = new HashMap<>();
-		
-		while (scanner.hasNextLine()) {
+
+		try {
+			// Stream and lambda
+			Files.lines(Paths.get(fileLocation)).map(line -> line.split("\t"))
+				.forEach(parameters -> {
+					if (parameters.length != 2) {
+						throw new RuntimeException("Error: a line is not properly formatted");
+					}
+					String playerName = parameters[0];
+					String chanceValue = parameters[1];
+
+					// Create player if it is the first chance
+					if(!players.containsKey(playerName)) {
+						players.put(playerName, new Game());
+					}
+
+					// Add chance to player's game record
+					Chance chance = new Chance(chanceValue);
+					players.get(playerName).add(chance);
+				});
 			
-			// Validate line values
-			String line = scanner.nextLine();
-			String[] parameters = line.split("\t");
-			if (parameters.length != 2) {
-				throw new RuntimeException("Error: this line is not properly formatted (" + line + ")");
-			}
-			String playerName = parameters[0];
-			String chanceValue = parameters[1];
-
-			// Create player if it is the first chance
-			if(!players.containsKey(playerName)) {
-				players.put(playerName, new Game());
-			}
-
-			// Add chance to player's game record
-			Chance chance = new Chance(chanceValue);
-			players.get(playerName).add(chance);
+		} catch (IOException e) {
+			throw new RuntimeException("IOException: " + e.getMessage());
 		}
 	}
 
