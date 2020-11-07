@@ -1,12 +1,13 @@
 package ceq.bowling;
 
 import ceq.bowling.score.ScoreBoard;
+import ceq.bowling.score.ScoreBoardFactory;
 
 /*
- * Role: reading file path parameter and executing tasks needed to show the game score board
+ * Role: passing file path to score board
  * 
  * Input: file path
- * Output: game score board 
+ * Output: printed game score board 
  * 
  * */
 public class App {
@@ -17,12 +18,10 @@ public class App {
 			throw new RuntimeException("Error: you should only enter 1 parameter (path to file)");
 		}
 		
-		// Create score board using input file
-		ScoreBoard board = new ScoreBoard(args[0]);
-		
-		// Print score board information
-		board.printInformation();
-
+		// Create score board to print information of input file
+		ScoreBoardFactory factory = new ScoreBoardFactory();
+		ScoreBoard board = factory.getBoard();
+		board.printScoreForFile(args[0]);
     }
     
 }

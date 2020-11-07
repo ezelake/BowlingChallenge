@@ -1,4 +1,6 @@
-package ceq.bowling.game;
+package ceq.bowling.frame.impl;
+
+import ceq.bowling.frame.Frame;
 
 public class Normal extends Frame {
 	

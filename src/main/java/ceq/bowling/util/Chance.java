@@ -1,10 +1,10 @@
-package ceq.bowling.score;
+package ceq.bowling.util;
 
 /*
  * Role: validating chances read from input file
  * 
- * Input: array of elements in a line
- * Output: object with player name and number of pins 
+ * Input: chance value
+ * Output: object with chance value and number of pins 
  * 
  * */
 public class Chance {

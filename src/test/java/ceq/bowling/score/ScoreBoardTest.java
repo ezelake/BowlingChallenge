@@ -1,6 +1,7 @@
 package ceq.bowling.score;
 
-import static org.junit.Assert.assertTrue;
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 
 import org.junit.Test;
 
@@ -10,8 +11,14 @@ public class ScoreBoardTest {
 	
 	@Test
 	public void playerListTest() {
-		ScoreBoard board = new ScoreBoard(AppTest.TEST_FILE);
-		assertTrue(board.players.get("Jeff") != null);
+		PrintStream originalOut = System.out;
+		System.setOut(new PrintStream(new ByteArrayOutputStream()));
+
+		ScoreBoardFactory factory = new ScoreBoardFactory();
+		ScoreBoard board = factory.getBoard();
+		board.printScoreForFile(AppTest.TEST_FILE);
+		
+	    System.setOut(originalOut);
 	}
 
 }

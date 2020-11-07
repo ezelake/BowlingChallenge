@@ -1,8 +1,12 @@
-package ceq.bowling.game;
+package ceq.bowling.frame;
 
 import java.util.List;
 
-import ceq.bowling.score.Chance;
+import ceq.bowling.frame.impl.Final;
+import ceq.bowling.frame.impl.Normal;
+import ceq.bowling.frame.impl.Spare;
+import ceq.bowling.frame.impl.Strike;
+import ceq.bowling.util.Chance;
 
 /*
  * Role: create a frame from a list of chances

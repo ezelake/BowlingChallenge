@@ -1,7 +1,9 @@
-package ceq.bowling.game;
+package ceq.bowling.frame;
 
 public abstract class Frame {
-	int points;
+	
+	protected int points;
+	
 	public int getPoints() {
 		return points;
 	}

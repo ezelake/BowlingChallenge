@@ -6,38 +6,22 @@ import java.util.ArrayList;
 
 import org.junit.Test;
 
-import ceq.bowling.score.Chance;
+import ceq.bowling.frame.Frame;
+import ceq.bowling.util.Chance;
 
 public class GameTest {
 
 	@Test
-	public void addTest() {
-		Game game = new Game();
-		
-		for (int i = 0; i < 10; i++) {
-			game.add(new Chance("10"));
-		}
-		
-		int sum = 0;
-		
-		ArrayList<Chance> chances = game.chances;
-		for (Chance chance : chances) {
-			sum += chance.getChancePins();
-		}
-		
-		assertTrue(sum == 100);
-	}
-
-	@Test
 	public void generateFramesTest() {
-		Game game = new Game();
+		GameFactory gameFactory = new GameFactory();
+		Game game = gameFactory.getGame();
 		
 		for (int i = 0; i < 12; i++) {
 			game.add(new Chance("10"));
 		}
 		
-		game.generateFrames();
+		ArrayList<Frame> frames = game.generateFrames();
 		
-		assertTrue(game.frames.size() == 10);
+		assertTrue(frames.size() == 10);
 	}
 }

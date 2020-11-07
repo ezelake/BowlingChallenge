@@ -1,4 +1,4 @@
-package ceq.bowling.game;
+package ceq.bowling.frame;
 
 import static org.junit.Assert.assertTrue;
 
@@ -7,7 +7,7 @@ import java.util.List;
 
 import org.junit.Test;
 
-import ceq.bowling.score.Chance;
+import ceq.bowling.util.Chance;
 
 public class FrameTest {
 

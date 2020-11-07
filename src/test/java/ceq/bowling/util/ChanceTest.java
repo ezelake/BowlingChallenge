@@ -1,4 +1,4 @@
-package ceq.bowling.score;
+package ceq.bowling.util;
 
 import static org.junit.Assert.assertTrue;
 

@@ -1,8 +1,9 @@
-package ceq.bowling.game;
+package ceq.bowling.frame.impl;
 
 import java.util.List;
 
-import ceq.bowling.score.Chance;
+import ceq.bowling.frame.Frame;
+import ceq.bowling.util.Chance;
 
 public class Final extends Frame {
 	
