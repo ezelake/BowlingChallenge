@@ -9,3 +9,7 @@ Execution
 	mvn clean package
 	cd target/classes
 	java ceq/bowling/App /path/to/file.txt
+
+Test scripts
+- run.sh
+- test.sh
