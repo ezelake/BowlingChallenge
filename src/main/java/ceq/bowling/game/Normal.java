@@ -2,10 +2,10 @@ package ceq.bowling.game;
 
 public class Normal extends Frame {
 	
-	int firstChance;
-	int secondChance;
+	String firstChance;
+	String secondChance;
 	
-	public Normal(int points, int firstChance, int secondChance) {
+	public Normal(int points, String firstChance, String secondChance) {
 		this.points = points;
 		this.firstChance = firstChance;
 		this.secondChance = secondChance;

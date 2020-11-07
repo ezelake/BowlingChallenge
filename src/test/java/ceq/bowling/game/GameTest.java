@@ -13,14 +13,14 @@ public class GameTest {
 		Game game = new Game();
 		
 		for (int i = 0; i < 10; i++) {
-			game.add(10);
+			game.add("10");
 		}
 		
 		int sum = 0;
 		
-		ArrayList<Integer> chances = game.chances;
-		for (Integer integer : chances) {
-			sum += integer;
+		ArrayList<String> chances = game.chances;
+		for (String string : chances) {
+			sum += Integer.parseInt(string);
 		}
 		
 		assertTrue(sum == 100);
@@ -31,7 +31,7 @@ public class GameTest {
 		Game game = new Game();
 		
 		for (int i = 0; i < 12; i++) {
-			game.add(10);
+			game.add("10");
 		}
 		
 		game.generateFrames();

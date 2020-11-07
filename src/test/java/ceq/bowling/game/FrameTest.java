@@ -11,18 +11,18 @@ public class FrameTest {
 
 	@Test
 	public void strikeTest() {
-		List<Integer> subList = Arrays.asList(10,5,3);;
+		List<String> subList = Arrays.asList("10","5","3");
 		
 		FrameFactory factory = new FrameFactory();
 		Frame frame = factory.createFrame(subList);
 		
-		assertTrue(frame.getPinfall().equals("X"));
+		assertTrue(frame.getPinfall().equals("  X"));
 		assertTrue(frame.getPoints() == 18);
 	}
 
 	@Test
 	public void spareTest() {
-		List<Integer> subList = Arrays.asList(5,5,3);;
+		List<String> subList = Arrays.asList("5","5","3");
 		
 		FrameFactory factory = new FrameFactory();
 		Frame frame = factory.createFrame(subList);
@@ -33,7 +33,7 @@ public class FrameTest {
 
 	@Test
 	public void normalTest() {
-		List<Integer> subList = Arrays.asList(5,3);;
+		List<String> subList = Arrays.asList("5","3");
 		
 		FrameFactory factory = new FrameFactory();
 		Frame frame = factory.createFrame(subList);

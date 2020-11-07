@@ -10,7 +10,7 @@ public class ValidatedChanceTest {
 	public void validatedChanceTest() {
 		ValidatedChance chance = new ValidatedChance(new String[] {"Ceq", "5"});
 		assertTrue(chance.getPlayerName().equals("Ceq"));
-		assertTrue(chance.getPins() == 5);
+		assertTrue(chance.getChance().equals("5"));
 	}
 
 }

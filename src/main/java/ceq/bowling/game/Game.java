@@ -11,17 +11,17 @@ import java.util.ArrayList;
  * */
 public class Game {
 	
-	ArrayList<Integer> chances;
+	ArrayList<String> chances;
 	ArrayList<Frame> frames;
 	
 	public Game() {
-		chances = new ArrayList<Integer>();
+		chances = new ArrayList<String>();
 		frames = new ArrayList<Frame>();
 	}
 
-	public void add(int pins) {
+	public void add(String chance) {
 		// Add number of pins to chances
-		chances.add(pins);
+		chances.add(chance);
 	}
 
 	// Iterate over chances array to generate frames from the game
@@ -36,27 +36,41 @@ public class Game {
 		// Generate frames until we have the complete game
 		while (frames.size() < 10) {
 			
-			// If it was STRIKE
-			if(chances.get(index) == 10) {
-				frames.add(factory.createFrame(chances.subList(index, index+3)));
-				index += 1;
-				
-			// If it was SPARE
-			} else if(chances.get(index)+chances.get(index+1) == 10) {
-				frames.add(factory.createFrame(chances.subList(index, index+3)));
-				index += 2;
+			if (frames.size() < 9) {
+				// If it was STRIKE
+				if(pinsInChance(chances.get(index)) == 10) {
+					frames.add(factory.createFrame(chances.subList(index, index+3)));
+					index += 1;
+					
+				// If it was SPARE
+				} else if( pinsInChance(chances.get(index)) + pinsInChance(chances.get(index+1)) == 10) {
+					frames.add(factory.createFrame(chances.subList(index, index+3)));
+					index += 2;
 
-			// If it was NORMAL
+				// If it was NORMAL
+				} else {
+					frames.add(factory.createFrame(chances.subList(index, index+2)));
+					index += 2;
+				}
 			} else {
-				frames.add(factory.createFrame(chances.subList(index, index+2)));
-				index += 2;
+				// If it is final frame
+				frames.add(factory.createFinalFrame(chances.subList(index, chances.size())));
 			}
+			
 			
 		}
 	}
 	
 	public ArrayList<Frame> getFrames(){
 		return frames;
+	}
+	
+	private int pinsInChance(String chance) {
+		if(chance.equals("F")) {
+			return 0;
+		} else {
+			return Integer.parseInt(chance);
+		}
 	}
 	
 }

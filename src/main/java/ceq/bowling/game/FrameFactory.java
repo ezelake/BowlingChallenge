@@ -18,22 +18,37 @@ public class FrameFactory {
 		points = 0;
 	}
 
-	public Frame createFrame(List<Integer> subList) {
+	public Frame createFrame(List<String> subList) {
 		
 		Frame frame = null;
 		
 		// Create the frame depending on its type
-		if(subList.get(0) == 10) {
-			frame = new Strike(subList.get(0) + subList.get(1) + subList.get(2) + points);
-		} else if((subList.get(0)+subList.get(1)) == 10) {
-			frame = new Spare(subList.get(0) + subList.get(1) + subList.get(2) + points, subList.get(0));
+		if(pinsInChance(subList.get(0)) == 10) {
+			frame = new Strike(pinsInChance(subList.get(0)) + pinsInChance(subList.get(1))
+			+ pinsInChance(subList.get(2)) + points);
+		} else if((pinsInChance(subList.get(0))+pinsInChance(subList.get(1))) == 10) {
+			frame = new Spare(pinsInChance(subList.get(0)) + pinsInChance(subList.get(1)) 
+			+ pinsInChance(subList.get(2)) + points, subList.get(0));
 		} else {
-			frame = new Normal(subList.get(0) + subList.get(1) + points, subList.get(0), subList.get(1));
+			frame = new Normal(pinsInChance(subList.get(0)) + pinsInChance(subList.get(1)) + points, 
+					subList.get(0), subList.get(1));
 		}
 		
 		// Update points and return created frame
 		points = frame.getPoints();
 		return frame;
+	}
+
+	private int pinsInChance(String chance) {
+		if(chance.equals("F")) {
+			return 0;
+		} else {
+			return Integer.parseInt(chance);
+		}
+	}
+
+	public Frame createFinalFrame(List<String> subList) {
+		return new Final(points, subList);
 	}
 
 }

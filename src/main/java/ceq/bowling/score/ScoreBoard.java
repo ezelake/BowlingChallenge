@@ -37,20 +37,20 @@ public class ScoreBoard {
 			}
 			
 			// Add chance to player's game record
-			players.get(chance.getPlayerName()).add(chance.getPins());
+			players.get(chance.getPlayerName()).add(chance.getChance());
 
 		}
 	}
 
 	public void printInformation() {
-		System.out.println("Frames \t1 \t2 \t3 \t4 \t5 \t6 \t7 \t8 \t9 \t10");
+		System.out.println("Frame \t\t1 \t2 \t3 \t4 \t5 \t6 \t7 \t8 \t9 \t10");
 		for (Entry<String, Game> entry : players.entrySet()) {
 			System.out.println(entry.getKey());
 			
 			Game game = entry.getValue();
 			game.generateFrames();
 			ArrayList<Frame> frames = game.getFrames();
-			System.out.println("Frames \t" + frames.get(0).getPinfall()
+			System.out.println("Pinfalls \t" + frames.get(0).getPinfall()
 					+ "\t" + frames.get(1).getPinfall()
 					+ "\t" + frames.get(2).getPinfall()
 					+ "\t" + frames.get(3).getPinfall()
@@ -60,7 +60,7 @@ public class ScoreBoard {
 					+ "\t" + frames.get(7).getPinfall()
 					+ "\t" + frames.get(8).getPinfall()
 					+ "\t" + frames.get(9).getPinfall());
-			System.out.println("Points \t" + frames.get(0).getPoints()
+			System.out.println("Score \t\t" + frames.get(0).getPoints()
 					+ "\t" + frames.get(1).getPoints()
 					+ "\t" + frames.get(2).getPoints()
 					+ "\t" + frames.get(3).getPoints()
