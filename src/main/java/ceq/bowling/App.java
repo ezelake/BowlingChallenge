@@ -1,5 +1,10 @@
 package ceq.bowling;
 
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+
+import ceq.bowling.util.FileOperator;
+
 /*
  * Role: reading file parameter path and executing tasks needed to show the game score board
  * 
@@ -10,12 +15,20 @@ package ceq.bowling;
 public class App {
 	
     public static void main (String[] args) {
+    	// Validate input parameters amount
 		if (args.length != 1) {
 			throw new RuntimeException("Error: you should only enter 1 parameter (path to file)");
 		}
 		
+		// Use FileOperator to open File and generate Scanner object
 		String location = args[0];
-		System.out.println("File location: " + location);
+		FileOperator operator = new FileOperator(location);
+		try {
+			Scanner scanner = operator.getFileScanner();
+			scanner.close();
+		} catch (FileNotFoundException e) {
+			throw new RuntimeException(e.getMessage());
+		}
     }
     
 }
