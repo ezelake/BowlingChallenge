@@ -1,6 +1,5 @@
 package ceq.bowling;
 
-import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 import ceq.bowling.util.FileOperator;
@@ -23,12 +22,10 @@ public class App {
 		// Use FileOperator to open File and generate Scanner object
 		String location = args[0];
 		FileOperator operator = new FileOperator(location);
-		try {
-			Scanner scanner = operator.getFileScanner();
-			scanner.close();
-		} catch (FileNotFoundException e) {
-			throw new RuntimeException(e.getMessage());
-		}
+		Scanner scanner = operator.getFileScanner();
+
+		// Close scanner after reading file
+		scanner.close();
     }
     
 }

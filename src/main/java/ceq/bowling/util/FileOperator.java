@@ -19,10 +19,15 @@ public class FileOperator {
 		filePath = path;
 	}
 
-	public Scanner getFileScanner() throws FileNotFoundException {
+	public Scanner getFileScanner() {
 		File file = new File(filePath);
+		
 		if (file.canRead()) {
-			return new Scanner(file);
+			try {
+				return new Scanner(file);
+			} catch (FileNotFoundException e) {
+				throw new RuntimeException("FileNotFoundException: " + e.getMessage());
+			}
 		} else {
 			throw new RuntimeException("Error: can't read file " + filePath);
 		}
