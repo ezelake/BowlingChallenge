@@ -5,7 +5,7 @@ import java.util.List;
 import ceq.bowling.score.Chance;
 
 /*
- * Role: create frame from a list of chances
+ * Role: create a frame from a list of chances
  * 
  * Input: list of chances
  * Output: frame with points

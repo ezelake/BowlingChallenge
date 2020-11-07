@@ -27,7 +27,7 @@ public class Game {
 	}
 
 	// Iterate over chances array to generate frames from the game
-	public void generateFrames() {
+	public ArrayList<Frame> generateFrames() {
 		
 		// Create Frame Factory
 		FrameFactory factory = new FrameFactory();
@@ -61,9 +61,7 @@ public class Game {
 			
 			
 		}
-	}
-	
-	public ArrayList<Frame> getFrames(){
+
 		return frames;
 	}
 	

@@ -48,14 +48,15 @@ public class ScoreBoard {
 		}
 	}
 
+	// print score board information to system output
 	public void printInformation() {
 		System.out.println("Frame \t\t1 \t2 \t3 \t4 \t5 \t6 \t7 \t8 \t9 \t10");
+		
 		for (Entry<String, Game> entry : players.entrySet()) {
 			System.out.println(entry.getKey());
 			
 			Game game = entry.getValue();
-			game.generateFrames();
-			ArrayList<Frame> frames = game.getFrames();
+			ArrayList<Frame> frames = game.generateFrames();
 			
 			System.out.println("Pinfalls \t" + frames.get(0).getPinfall()
 					+ "\t" + frames.get(1).getPinfall()
