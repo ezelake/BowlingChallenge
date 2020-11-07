@@ -2,6 +2,7 @@ package ceq.bowling;
 
 import java.util.Scanner;
 
+import ceq.bowling.score.ScoreBoard;
 import ceq.bowling.util.FileOperator;
 
 /*
@@ -23,6 +24,10 @@ public class App {
 		String location = args[0];
 		FileOperator operator = new FileOperator(location);
 		Scanner scanner = operator.getFileScanner();
+		
+		// Create score board using input file
+		ScoreBoard board = new ScoreBoard(scanner);
+		System.out.println(board);
 
 		// Close scanner after reading file
 		scanner.close();
