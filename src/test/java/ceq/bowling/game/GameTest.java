@@ -26,4 +26,16 @@ public class GameTest {
 		assertTrue(sum == 100);
 	}
 
+	@Test
+	public void generateFramesTest() {
+		Game game = new Game();
+		
+		for (int i = 0; i < 12; i++) {
+			game.add(10);
+		}
+		
+		game.generateFrames();
+		
+		assertTrue(game.frames.size() == 10);
+	}
 }
