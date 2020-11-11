@@ -4,7 +4,11 @@ import org.junit.Test;
 
 public class AppTest {
 	
-	public static String TEST_FILE = "/home/ealagomarsino/Ceqe/BowlingChallenge/src/test/input/bowl-1p.txt";
+	public static String TEST_FILE = null;
+	
+	static {
+		TEST_FILE = (System.getProperty("user.dir") + "/src/test/input/bowl-1p.txt");
+	}
 
     @Test
     public void mainTest(){
