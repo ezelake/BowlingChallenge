@@ -18,7 +18,7 @@ public class FrameTest {
 		FrameFactory factory = new FrameFactory();
 		Frame frame = factory.createStrike(subList);
 		
-		assertTrue(frame.getPinfall().equals("  X"));
+		assertTrue(frame.getPinfall().equals("\tX"));
 		assertTrue(frame.getPoints() == 18);
 	}
 
@@ -29,7 +29,7 @@ public class FrameTest {
 		FrameFactory factory = new FrameFactory();
 		Frame frame = factory.createSpare(subList);
 		
-		assertTrue(frame.getPinfall().equals("5 /"));
+		assertTrue(frame.getPinfall().equals("5\t/"));
 		assertTrue(frame.getPoints() == 13);
 	}
 
@@ -40,7 +40,7 @@ public class FrameTest {
 		FrameFactory factory = new FrameFactory();
 		Frame frame = factory.createNormal(subList);
 		
-		assertTrue(frame.getPinfall().equals("5 3"));
+		assertTrue(frame.getPinfall().equals("5\t3"));
 		assertTrue(frame.getPoints() == 8);
 	}
 	
@@ -51,7 +51,7 @@ public class FrameTest {
 		FrameFactory factory = new FrameFactory();
 		Frame frame = factory.createFinal(subList);
 		
-		assertTrue(frame.getPinfall().equals("X 5 3"));
+		assertTrue(frame.getPinfall().equals("X\t5\t3"));
 		assertTrue(frame.getPoints() == 18);
 	}
 

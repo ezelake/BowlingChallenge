@@ -12,7 +12,7 @@ public class ClassicScorePrinter implements ScorePrinter {
 
 	@Override
 	public void printScoreForPlayers(HashMap<String, Game> players) {
-		System.out.println("Frame \t\t1 \t2 \t3 \t4 \t5 \t6 \t7 \t8 \t9 \t10");
+		System.out.println("Frame \t\t1 \t\t2 \t\t3 \t\t4 \t\t5 \t\t6 \t\t7 \t\t8 \t\t9 \t\t10");
 		
 		for (Entry<String, Game> entry : players.entrySet()) {
 			System.out.println(entry.getKey());
@@ -32,15 +32,15 @@ public class ClassicScorePrinter implements ScorePrinter {
 					+ "\t" + frames.get(9).getPinfall());
 			
 			System.out.println("Score \t\t" + frames.get(0).getPoints()
-					+ "\t" + frames.get(1).getPoints()
-					+ "\t" + frames.get(2).getPoints()
-					+ "\t" + frames.get(3).getPoints()
-					+ "\t" + frames.get(4).getPoints()
-					+ "\t" + frames.get(5).getPoints()
-					+ "\t" + frames.get(6).getPoints()
-					+ "\t" + frames.get(7).getPoints()
-					+ "\t" + frames.get(8).getPoints()
-					+ "\t" + frames.get(9).getPoints());
+					+ "\t\t" + frames.get(1).getPoints()
+					+ "\t\t" + frames.get(2).getPoints()
+					+ "\t\t" + frames.get(3).getPoints()
+					+ "\t\t" + frames.get(4).getPoints()
+					+ "\t\t" + frames.get(5).getPoints()
+					+ "\t\t" + frames.get(6).getPoints()
+					+ "\t\t" + frames.get(7).getPoints()
+					+ "\t\t" + frames.get(8).getPoints()
+					+ "\t\t" + frames.get(9).getPoints());
 
 		}
 	}

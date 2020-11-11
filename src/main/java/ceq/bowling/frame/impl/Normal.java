@@ -15,7 +15,7 @@ public class Normal extends Frame {
 
 	@Override
 	public String getPinfall() {
-		return firstChance + " " + secondChance;
+		return firstChance + "\t" + secondChance;
 	}
 
 }

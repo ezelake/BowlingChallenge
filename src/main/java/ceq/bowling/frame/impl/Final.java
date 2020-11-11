@@ -17,7 +17,7 @@ public class Final extends Frame {
 		}
 		
 		// Update string to be shown in output
-		this.pinfall = pinfallInChance(subList.get(0).getChanceValue()) + " ";
+		this.pinfall = pinfallInChance(subList.get(0).getChanceValue()) + "\t";
 		
 		if (subList.get(0).getChancePins() != 10 && 
 				subList.get(0).getChancePins()+subList.get(1).getChancePins() == 10 ) {
@@ -27,7 +27,7 @@ public class Final extends Frame {
 		}
 		
 		if(subList.size() == 3) {
-			this.pinfall += (" " + pinfallInChance(subList.get(2).getChanceValue()));
+			this.pinfall += ("\t" + pinfallInChance(subList.get(2).getChanceValue()));
 		}
 	}
 

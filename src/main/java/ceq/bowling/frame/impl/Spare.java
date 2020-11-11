@@ -13,7 +13,7 @@ public class Spare extends Frame {
 
 	@Override
 	public String getPinfall() {
-		return chance + " /";
+		return chance + "\t/";
 	}
 
 }

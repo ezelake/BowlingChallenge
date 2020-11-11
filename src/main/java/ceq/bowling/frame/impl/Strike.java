@@ -10,7 +10,7 @@ public class Strike extends Frame {
 
 	@Override
 	public String getPinfall() {
-		return "  X";
+		return "\tX";
 	}
 
 }
