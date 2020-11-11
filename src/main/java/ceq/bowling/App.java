@@ -15,7 +15,8 @@ public class App {
     public static void main (String[] args) {
     	// Validate input parameters amount
 		if (args.length != 1) {
-			throw new RuntimeException("Error: you should only enter 1 parameter (path to file)");
+			System.out.println("Error: you should only enter 1 parameter (path to file)");
+			System.exit(1);
 		}
 		
 		// Create score board to print information of input file

@@ -27,7 +27,8 @@ public class ClassicScoreBoard implements ScoreBoard {
 			Files.lines(Paths.get(fileLocation)).map(line -> line.split("\t"))
 				.forEach(parameters -> {
 					if (parameters.length != 2) {
-						throw new RuntimeException("Error: a line is not properly formatted");
+						System.out.println("Error: a line is not properly formatted");
+						System.exit(4);
 					}
 					String playerName = parameters[0];
 					String chanceValue = parameters[1];
@@ -43,7 +44,8 @@ public class ClassicScoreBoard implements ScoreBoard {
 				});
 			
 		} catch (IOException e) {
-			throw new RuntimeException("IOException: " + e.getMessage());
+			System.out.println("Error with IOException: " + e.getMessage());
+			System.exit(5);
 		}
 		
 		ScorePrinterFactory factory = new ScorePrinterFactory();

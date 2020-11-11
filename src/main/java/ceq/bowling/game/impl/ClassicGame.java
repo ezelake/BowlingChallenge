@@ -47,9 +47,10 @@ public class ClassicGame implements Game {
 
 				// If it was an error
 				} else if ((chances.get(index).getChancePins() + chances.get(index+1).getChancePins()) > 10){
-					throw new RuntimeException("Error: a max of 10 pins are allowed per frame. Frame: "
+					System.out.println("Error: a max of 10 pins are allowed per frame. Frame: "
 							+ (frames.size()+1) + " Amount: "
 							+ (chances.get(index).getChancePins() + chances.get(index+1).getChancePins()));
+					System.exit(3);
 				
 				// If it was NORMAL
 				} else {

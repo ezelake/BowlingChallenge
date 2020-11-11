@@ -20,7 +20,8 @@ public class Chance {
 			if (pins >= 0 && pins <= 10) {
 				this.chanceValue = chanceValue;
 			} else {
-				throw new RuntimeException("Error: pins number should be between 0 and 10 (" + pins + ")");
+				System.out.println("Error: pins number should be between 0 and 10 (" + pins + ")");
+				System.exit(2);
 			}
 		}
 	}
