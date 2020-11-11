@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import ceq.bowling.frame.Frame;
 import ceq.bowling.frame.FrameFactory;
 import ceq.bowling.game.Game;
+import ceq.bowling.util.BowlingException;
 import ceq.bowling.util.Chance;
 
 public class ClassicGame implements Game {
@@ -21,7 +22,7 @@ public class ClassicGame implements Game {
 	}
 	
 	// Iterate over chances array to generate frames from the game
-	public ArrayList<Frame> generateFrames() {
+	public ArrayList<Frame> generateFrames() throws BowlingException {
 
 		ArrayList<Frame> frames = new ArrayList<Frame>();
 		
@@ -47,10 +48,9 @@ public class ClassicGame implements Game {
 
 				// If it was an error
 				} else if ((chances.get(index).getChancePins() + chances.get(index+1).getChancePins()) > 10){
-					System.out.println("Error: a max of 10 pins are allowed per frame. Frame: "
+					throw new BowlingException("Error: a max of 10 pins are allowed per frame. Frame: "
 							+ (frames.size()+1) + " Amount: "
 							+ (chances.get(index).getChancePins() + chances.get(index+1).getChancePins()));
-					System.exit(3);
 				
 				// If it was NORMAL
 				} else {

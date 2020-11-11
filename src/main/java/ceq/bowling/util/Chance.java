@@ -11,7 +11,7 @@ public class Chance {
 	
 	String chanceValue;
 
-	public Chance(String chanceValue) {
+	public Chance(String chanceValue) throws BowlingException {
 		// Validate chance content
 		if (chanceValue.equals("F")) {
 			this.chanceValue = chanceValue;
@@ -20,8 +20,7 @@ public class Chance {
 			if (pins >= 0 && pins <= 10) {
 				this.chanceValue = chanceValue;
 			} else {
-				System.out.println("Error: pins number should be between 0 and 10 (" + pins + ")");
-				System.exit(2);
+				throw new BowlingException("Error: pins number should be between 0 and 10 (" + pins + ")");
 			}
 		}
 	}

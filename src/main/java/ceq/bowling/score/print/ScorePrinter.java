@@ -3,6 +3,7 @@ package ceq.bowling.score.print;
 import java.util.HashMap;
 
 import ceq.bowling.game.Game;
+import ceq.bowling.util.BowlingException;
 
 /*
  * Role: reading map to print game scores
@@ -12,5 +13,5 @@ import ceq.bowling.game.Game;
  * 
  * */
 public interface ScorePrinter {
-	void printScoreForPlayers(HashMap<String, Game> players);
+	void printScoreForPlayers(HashMap<String, Game> players) throws BowlingException;
 }

@@ -7,7 +7,7 @@ import org.junit.Test;
 public class ChanceTest {
 	
 	@Test
-	public void validatedChanceTest() {
+	public void validatedChanceTest() throws BowlingException {
 		Chance chance = new Chance("F");
 		assertTrue(chance.getChanceValue().equals("F"));
 		assertTrue(chance.getChancePins() == 0);

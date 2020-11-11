@@ -7,11 +7,12 @@ import java.util.Map.Entry;
 import ceq.bowling.frame.Frame;
 import ceq.bowling.game.Game;
 import ceq.bowling.score.print.ScorePrinter;
+import ceq.bowling.util.BowlingException;
 
 public class ClassicScorePrinter implements ScorePrinter {
 
 	@Override
-	public void printScoreForPlayers(HashMap<String, Game> players) {
+	public void printScoreForPlayers(HashMap<String, Game> players) throws BowlingException {
 		System.out.println("Frame \t\t1 \t\t2 \t\t3 \t\t4 \t\t5 \t\t6 \t\t7 \t\t8 \t\t9 \t\t10");
 		
 		for (Entry<String, Game> entry : players.entrySet()) {

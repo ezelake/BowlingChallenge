@@ -7,12 +7,13 @@ import java.util.List;
 
 import org.junit.Test;
 
+import ceq.bowling.util.BowlingException;
 import ceq.bowling.util.Chance;
 
 public class FrameTest {
 
 	@Test
-	public void strikeTest() {
+	public void strikeTest() throws BowlingException {
 		List<Chance> subList = Arrays.asList(new Chance("10"), new Chance("5"), new Chance("3"));
 		
 		FrameFactory factory = new FrameFactory();
@@ -23,7 +24,7 @@ public class FrameTest {
 	}
 
 	@Test
-	public void spareTest() {
+	public void spareTest() throws BowlingException {
 		List<Chance> subList = Arrays.asList(new Chance("5"), new Chance("5"), new Chance("3"));
 		
 		FrameFactory factory = new FrameFactory();
@@ -34,7 +35,7 @@ public class FrameTest {
 	}
 
 	@Test
-	public void normalTest() {
+	public void normalTest() throws BowlingException {
 		List<Chance> subList = Arrays.asList(new Chance("5"), new Chance("3"));
 		
 		FrameFactory factory = new FrameFactory();
@@ -45,7 +46,7 @@ public class FrameTest {
 	}
 	
 	@Test
-	public void finalTest() {
+	public void finalTest() throws BowlingException {
 		List<Chance> subList = Arrays.asList(new Chance("10"), new Chance("5"), new Chance("3"));
 		
 		FrameFactory factory = new FrameFactory();

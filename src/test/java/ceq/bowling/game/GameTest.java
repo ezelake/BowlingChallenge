@@ -7,12 +7,13 @@ import java.util.ArrayList;
 import org.junit.Test;
 
 import ceq.bowling.frame.Frame;
+import ceq.bowling.util.BowlingException;
 import ceq.bowling.util.Chance;
 
 public class GameTest {
 
 	@Test
-	public void generateFramesTest() {
+	public void generateFramesTest() throws BowlingException {
 		GameFactory gameFactory = new GameFactory();
 		Game game = gameFactory.getGame();
 		

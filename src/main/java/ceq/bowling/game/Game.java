@@ -3,6 +3,7 @@ package ceq.bowling.game;
 import java.util.ArrayList;
 
 import ceq.bowling.frame.Frame;
+import ceq.bowling.util.BowlingException;
 import ceq.bowling.util.Chance;
 
 /*
@@ -13,6 +14,6 @@ import ceq.bowling.util.Chance;
  * 
  * */
 public interface Game {
-	ArrayList<Frame> generateFrames();
+	ArrayList<Frame> generateFrames() throws BowlingException;
 	void add(Chance chance);
 }
